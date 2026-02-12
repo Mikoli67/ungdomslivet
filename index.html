@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ungdomslivet 2026</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
       --bg: #0f172a;
@@ -15,11 +16,7 @@
       --border: #334155;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -67,14 +64,9 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
-    .page.active {
-      display: block;
-    }
+    .page.active { display: block; }
 
-    #forside {
-      text-align: center;
-      padding: 8rem 2rem 6rem;
-    }
+    #forside { text-align: center; padding: 8rem 2rem 6rem; }
 
     #forside h2 {
       font-size: 4.2rem;
@@ -85,21 +77,10 @@
       margin-bottom: 1rem;
     }
 
-    #forside h3 {
-      font-size: 1.5rem;
-      opacity: 0.85;
-    }
+    #forside h3 { font-size: 1.5rem; opacity: 0.85; }
 
-    h2 {
-      font-size: 2.1rem;
-      color: var(--accent);
-      margin: 2rem 0 1.2rem;
-    }
-
-    p, li {
-      font-size: 1.08rem;
-      color: #cbd5e1;
-    }
+    h2 { font-size: 2.1rem; color: var(--accent); margin: 2rem 0 1.2rem; }
+    p, li { font-size: 1.08rem; color: #cbd5e1; }
 
     .card {
       background: rgba(30, 41, 59, 0.6);
@@ -114,6 +95,14 @@
       transform: translateY(-4px);
       border-color: var(--accent);
       box-shadow: 0 12px 35px rgba(56, 189, 248, 0.15);
+    }
+
+    .avis-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
 
     .form-link {
@@ -135,42 +124,6 @@
       background: var(--accent-dark);
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35);
-    }
-
-    .video-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      margin-top: 1.5rem;
-    }
-
-    .video-item {
-      background: rgba(30, 41, 59, 0.6);
-      padding: 1.4rem;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-    }
-
-    .video-item h4 {
-      color: #e2e8f0;
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 1rem 0;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
     }
 
     .bottom-nav {
@@ -216,12 +169,6 @@
       color: #64748b;
       font-size: 0.9rem;
     }
-
-    @media (max-width: 600px) {
-      #forside h2 { font-size: 3.2rem; }
-      #forside h3 { font-size: 1.3rem; }
-      main { padding: 1.5rem 5% 9rem; }
-    }
   </style>
 </head>
 <body>
@@ -240,6 +187,10 @@
 
   <div id="avis" class="page">
     <h2>Avis</h2>
+
+    <!-- Billedet Medier.jpg i samme mappe som HTML -->
+    <img src="Medier.jpg" alt="Medier" class="avis-image">
+
     <div class="card">
       <p><strong>Ca. 1 ud af 3</strong> unge har haft sex uden fast forhold inden de fylder 18 (Sex & Samfund).</p>
     </div>
@@ -251,70 +202,11 @@
     </div>
   </div>
 
-  <div id="brevkasse" class="page">
-    <h2>Brevkasse</h2>
-    <p>Stil dit spørgsmål anonymt.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScmNMxrPigFMtS3HxVPEjIosD-lvhC_Y7fxYvfphq8e-p8jnA/viewform" 
-       target="_blank" class="form-link">
-       Åbn Brevkassen
-    </a>
-  </div>
-
-  <div id="test" class="page">
-    <h2>Skole Test</h2>
-    <p>Test hvordan du har det i skolen.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWxyD8yfEe6d6UYko4GG_dFDbji2Xoqqc6HTJlAHQx7wgfQQ/viewform" 
-       target="_blank" class="form-link">
-       Start testen
-    </a>
-  </div>
-
-  <div id="video" class="page">
-    <h2>Videoer</h2>
-    <p>Korte klip om de vigtigste emner.</p>
-
-    <div class="video-list">
-      <div class="video-item">
-        <h4>Samtykke – hvad betyder det?</h4>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Samtykke" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="video-item">
-        <h4>Prævention – hvad virker bedst?</h4>
-        <div class="video-container">
-          <!-- Erstat med jeres egen video-ID -->
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_HER" title="Prævention" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="video-item">
-        <h4>Porno vs. virkelighed</h4>
-        <div class="video-container">
-          <!-- Erstat med jeres egen video-ID -->
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_HER" title="Porno vs virkelighed" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="video-item">
-        <h4>Forelskelse – hvad sker i hjernen?</h4>
-        <div class="video-container">
-          <!-- Erstat med jeres egen video-ID -->
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_HER" title="Forelskelse" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </main>
 
 <nav class="bottom-nav">
   <a href="#forside" class="active"><i class="fas fa-home"></i>Forside</a>
   <a href="#avis"><i class="fas fa-newspaper"></i>Avis</a>
-  <a href="#brevkasse"><i class="fas fa-envelope"></i>Brevkasse</a>
-  <a href="#test"><i class="fas fa-question-circle"></i>Test</a>
-  <a href="#video"><i class="fas fa-video"></i>Video</a>
 </nav>
 
 <footer>
