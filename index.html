@@ -16,7 +16,11 @@
       --border: #334155;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -64,9 +68,14 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
-    .page.active { display: block; }
+    .page.active {
+      display: block;
+    }
 
-    #forside { text-align: center; padding: 8rem 2rem 6rem; }
+    #forside {
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
 
     #forside h2 {
       font-size: 4.2rem;
@@ -77,10 +86,21 @@
       margin-bottom: 1rem;
     }
 
-    #forside h3 { font-size: 1.5rem; opacity: 0.85; }
+    #forside h3 {
+      font-size: 1.5rem;
+      opacity: 0.85;
+    }
 
-    h2 { font-size: 2.1rem; color: var(--accent); margin: 2rem 0 1.2rem; }
-    p, li { font-size: 1.08rem; color: #cbd5e1; }
+    h2 {
+      font-size: 2.1rem;
+      color: var(--accent);
+      margin: 2rem 0 1.2rem;
+    }
+
+    p, li {
+      font-size: 1.08rem;
+      color: #cbd5e1;
+    }
 
     .card {
       background: rgba(30, 41, 59, 0.6);
@@ -124,6 +144,42 @@
       background: var(--accent-dark);
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35);
+    }
+
+    .video-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .video-item {
+      background: rgba(30, 41, 59, 0.6);
+      padding: 1.4rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .video-item h4 {
+      color: #e2e8f0;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1rem 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
 
     .bottom-nav {
@@ -174,60 +230,4 @@
 <body>
 
 <header>
-  <h1>Ungdomslivet 2026</h1>
-  <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
-</header>
-
-<main>
-
-  <div id="forside" class="page active">
-    <h2>Ungdomslivet</h2>
-    <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
-  </div>
-
-  <div id="avis" class="page">
-    <h2>Avis</h2>
-
-    <!-- Billedet Medier.jpg i samme mappe som HTML -->
-    <img src="Medier.jpg" alt="Medier" class="avis-image">
-
-    <div class="card">
-      <p><strong>Ca. 1 ud af 3</strong> unge har haft sex uden fast forhold inden de fylder 18 (Sex & Samfund).</p>
-    </div>
-    <div class="card">
-      <p>Mange vælger nu "slow dating" frem for hurtige hookups.</p>
-    </div>
-    <div class="card">
-      <p>Sociale medier har strammet regler for yngre brugere i 2026.</p>
-    </div>
-  </div>
-
-</main>
-
-<nav class="bottom-nav">
-  <a href="#forside" class="active"><i class="fas fa-home"></i>Forside</a>
-  <a href="#avis"><i class="fas fa-newspaper"></i>Avis</a>
-</nav>
-
-<footer>
-  <p>Lavet af 7.A og 7.B</p>
-</footer>
-
-<script>
-document.querySelectorAll('.bottom-nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelectorAll('.bottom-nav a').forEach(a => a.classList.remove('active'));
-    link.classList.add('active');
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const target = document.getElementById(link.getAttribute('href').substring(1));
-    if (target) {
-      target.classList.add('active');
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
-
-</body>
-</html>
+  <
