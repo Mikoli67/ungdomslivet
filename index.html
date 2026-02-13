@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --bg: #120014;                /* mørk pink-sort base */
-      --card: #1e0026;              /* magenta-kort */
-      --text: #ffe6f9;              /* lys pink-hvid tekst */
-      --accent: #ff00cc;            /* DEN STORE BESH: hot pink neon */
-      --accent-dark: #d600a8;       /* mørkere pink til hover */
-      --accent-light: #ff66ff;      /* lys neon-pink highlights */
-      --border: #9900cc;            /* pink-lilla rammer */
+      --bg: #0f0012;                /* dyb mørk pink-sort – perfekt base */
+      --card: #1c0024;              /* magenta-tonet kort */
+      --text: #ffe6f9;              /* lys pink-hvid – super læsbar */
+      --accent: #ff00cc;            /* DEN BESH FARVE: hot neon pink/magenta */
+      --accent-dark: #cc0099;       /* mørkere pink til hover/klik */
+      --accent-light: #ff66ff;      /* lys neon-pink glow */
+      --border: #990099;            /* pink-lilla rammer */
+      --glow: 0 0 20px rgba(255, 0, 204, 0.6); /* pink neon glow */
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -24,8 +25,8 @@
       line-height: 1.6;
     }
     header {
-      background: rgba(18, 0, 20, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 0, 18, 0.95);
+      backdrop-filter: blur(12px);
       padding: 1.2rem 5%;
       text-align: center;
       border-bottom: 1px solid var(--border);
@@ -37,11 +38,11 @@
       font-size: 2.1rem;
       font-weight: 800;
       color: var(--accent);
-      text-shadow: 0 0 15px rgba(255, 0, 204, 0.7);
+      text-shadow: var(--glow);
     }
     header h3 {
       font-size: 1.05rem;
-      opacity: 0.8;
+      opacity: 0.85;
       margin-top: 0.3rem;
     }
     main {
@@ -55,7 +56,7 @@
       padding: 1.8rem;
       border-radius: 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
     .page.active { display: block; }
     #forside {
@@ -68,41 +69,41 @@
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 2rem;
-      box-shadow: 0 10px 30px rgba(255, 0, 204, 0.3);
+      box-shadow: var(--glow);
     }
     #forside h2 {
       font-size: 4.2rem;
       font-weight: 900;
       color: var(--accent);
-      text-shadow: 0 0 25px rgba(255, 0, 204, 0.8);
+      text-shadow: 0 0 30px rgba(255, 0, 204, 0.9);
       margin-bottom: 1rem;
     }
     #forside h3 {
       font-size: 1.5rem;
-      opacity: 0.85;
+      opacity: 0.9;
     }
     h2 {
       font-size: 2.1rem;
       color: var(--accent);
       margin: 2rem 0 1.2rem;
-      text-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
+      text-shadow: var(--glow);
     }
     p, li {
       font-size: 1.08rem;
-      color: #f0ccff;
+      color: #ffccff;
     }
     .card {
-      background: rgba(30, 0, 38, 0.6);
+      background: rgba(28, 0, 36, 0.7);
       padding: 1.3rem;
       border-radius: 12px;
       margin: 1rem 0;
       border: 1px solid var(--border);
-      transition: all 0.25s;
+      transition: all 0.3s ease;
     }
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: var(--accent-light);
-      box-shadow: 0 12px 35px rgba(255, 102, 255, 0.35);
+      box-shadow: var(--glow);
     }
     .card img {
       width: 100%;
@@ -112,7 +113,7 @@
     .form-link {
       display: block;
       background: var(--accent);
-      color: #000000;
+      color: #000;
       font-weight: 700;
       text-align: center;
       padding: 1.1rem;
@@ -122,12 +123,12 @@
       max-width: 260px;
       font-size: 1.15rem;
       transition: all 0.3s;
-      box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
+      box-shadow: var(--glow);
     }
     .form-link:hover {
       background: var(--accent-dark);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(214, 0, 168, 0.6);
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(204, 0, 153, 0.8);
     }
     .video-list {
       display: flex;
@@ -136,10 +137,15 @@
       margin-top: 1.5rem;
     }
     .video-item {
-      background: rgba(30, 0, 38, 0.6);
+      background: rgba(28, 0, 36, 0.7);
       padding: 1.4rem;
       border-radius: 14px;
       border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .video-item:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--glow);
     }
     .video-item h4 {
       color: #ffe6f9;
@@ -153,7 +159,7 @@
       border-radius: 10px;
       overflow: hidden;
       margin: 1rem 0;
-      box-shadow: 0 6px 20px rgba(255, 0, 204, 0.3);
+      box-shadow: var(--glow);
     }
     .video-container iframe {
       position: absolute;
@@ -164,7 +170,7 @@
       position: fixed;
       bottom: 0;
       left: 0; right: 0;
-      background: rgba(18, 0, 20, 0.92);
+      background: rgba(15, 0, 18, 0.95);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
       display: flex;
@@ -173,13 +179,13 @@
       z-index: 999;
     }
     .bottom-nav a {
-      color: #cc99ff;
+      color: #ff99ff;
       text-decoration: none;
       font-size: 0.9rem;
       text-align: center;
       padding: 0.5rem 0.8rem;
       border-radius: 10px;
-      transition: all 0.25s;
+      transition: all 0.3s;
       flex: 1;
       max-width: 100px;
     }
@@ -190,14 +196,14 @@
     }
     .bottom-nav a.active,
     .bottom-nav a:hover {
-      color: #ffffff;
-      background: rgba(255, 0, 204, 0.3);
-      box-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
+      color: #fff;
+      background: rgba(255, 0, 204, 0.35);
+      box-shadow: var(--glow);
     }
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      color: #cc99ff;
+      color: #ff99ff;
       font-size: 0.9rem;
     }
     @media (max-width: 600px) {
