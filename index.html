@@ -8,12 +8,13 @@
 
 <style>
 :root {
-  --bg: #FF0000;                   /* main bright red */
-  --card: #FF4C4C;                 /* slightly darker red for cards */
-  --text: #fff;                     /* white text for readability */
-  --accent: #FFB347;               /* golden-orange accent for buttons/highlights */
-  --accent-dark: #FF9A00;          /* darker accent for hover */
-  --border: #FF6F6F;               /* subtle border in red shades */
+  --bg: #FF0000;                   /* bright red background */
+  --card: #FF1A1A;                 /* dark bright red cards */
+  --text: #fff;                     /* white text */
+  --accent: #FF4500;               /* fiery orange-red accents */
+  --accent-dark: #FF0000;          /* bright red for hover */
+  --border: #FF6F6F;               /* subtle red border */
+  --glow: rgba(255, 80, 80, 0.7);  /* neon glow effect */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,30 +25,34 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
+  transition: background 0.3s;
 }
 
 header {
-  background: rgba(255, 0, 0, 0.85);
-  padding: 1.2rem 5%;
+  background: rgba(255, 0, 0, 0.9);
+  padding: 1.5rem 5%;
   text-align: center;
   border-bottom: 2px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 0 30px var(--glow);
 }
 
 header h1 {
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: var(--text);
-  text-shadow: 2px 2px rgba(0,0,0,0.3);
+  text-shadow: 0 0 15px var(--glow), 0 0 30px var(--accent);
+  animation: pulse 2s infinite;
 }
 
 header h3 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   opacity: 0.9;
   margin-top: 0.3rem;
   color: #FFD5D5;
+  text-shadow: 0 0 10px var(--glow);
 }
 
 main {
@@ -59,13 +64,14 @@ main {
 .page {
   display: none;
   background: var(--card);
-  padding: 1.8rem;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 20px var(--glow), 0 10px 30px rgba(0,0,0,0.5);
+  transition: all 0.3s ease-in-out;
 }
 
-.page.active { display: block; }
+.page.active { display: block; transform: scale(1.02); }
 
 #forside {
   text-align: center;
@@ -76,18 +82,25 @@ main {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 20px;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 0 30px var(--glow), 0 10px 30px rgba(0,0,0,0.7);
+  transition: transform 0.3s;
+}
+
+#forside img.cover:hover {
+  transform: scale(1.05);
 }
 
 #forside h2 {
   font-size: 4rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #FF9A00, #FFB347);
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px var(--accent);
   margin-bottom: 1rem;
+  animation: glowText 2s infinite alternate;
 }
 
 #forside h3 {
@@ -100,6 +113,7 @@ h2 {
   font-size: 2.1rem;
   color: var(--accent);
   margin: 2rem 0 1.2rem;
+  text-shadow: 0 0 10px var(--glow);
 }
 
 p, li {
@@ -108,24 +122,31 @@ p, li {
 }
 
 .card {
-  background: #FF4C4C;
-  padding: 1.3rem;
-  border-radius: 12px;
+  background: #FF1A1A;
+  padding: 1.5rem;
+  border-radius: 15px;
   margin: 1rem 0;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
+  box-shadow: 0 0 15px var(--glow);
   transition: all 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.02);
   border-color: var(--accent);
-  box-shadow: 0 12px 35px rgba(255, 180, 71, 0.35);
+  box-shadow: 0 0 30px var(--accent), 0 15px 40px rgba(0,0,0,0.5);
 }
 
 .card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
 }
 
 .form-link {
@@ -134,49 +155,52 @@ p, li {
   color: #0f0f0f;
   font-weight: 700;
   text-align: center;
-  padding: 1.1rem;
-  border-radius: 12px;
+  padding: 1.2rem;
+  border-radius: 15px;
   text-decoration: none;
   margin: 2rem auto;
   max-width: 260px;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  box-shadow: 0 0 20px var(--accent);
   transition: all 0.3s;
 }
 
 .form-link:hover {
   background: var(--accent-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 154, 0, 0.35);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 40px var(--accent-dark);
 }
 
 .video-list {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 2rem;
   margin-top: 1.5rem;
 }
 
 .video-item {
-  background: #FF4C4C;
-  padding: 1.4rem;
-  border-radius: 14px;
-  border: 1px solid var(--border);
+  background: #FF1A1A;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 20px var(--glow);
 }
 
 .video-item h4 {
   color: #fff;
   margin-bottom: 0.8rem;
   font-size: 1.3rem;
+  text-shadow: 0 0 10px var(--accent);
 }
 
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   margin: 1rem 0;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px var(--accent), 0 6px 20px rgba(0,0,0,0.7);
 }
 
 .video-container iframe {
@@ -189,12 +213,13 @@ p, li {
   position: fixed;
   bottom: 0;
   left: 0; right: 0;
-  background: #FF3333;
+  background: #FF0000;
   display: flex;
   justify-content: space-around;
-  padding: 0.9rem 0;
+  padding: 1rem 0;
   z-index: 999;
   border-top: 2px solid var(--border);
+  box-shadow: 0 0 20px var(--glow);
 }
 
 .bottom-nav a {
@@ -203,8 +228,8 @@ p, li {
   font-size: 0.9rem;
   text-align: center;
   padding: 0.5rem 0.8rem;
-  border-radius: 10px;
-  transition: all 0.25s;
+  border-radius: 12px;
+  transition: all 0.3s;
   flex: 1;
   max-width: 100px;
 }
@@ -218,7 +243,8 @@ p, li {
 .bottom-nav a.active,
 .bottom-nav a:hover {
   color: var(--accent);
-  background: rgba(255, 180, 71, 0.2);
+  background: rgba(255, 69, 0, 0.3);
+  box-shadow: 0 0 20px var(--accent);
 }
 
 footer {
@@ -227,10 +253,23 @@ footer {
   color: #fff;
   font-size: 0.9rem;
   background: #FF1A1A;
+  box-shadow: 0 0 20px var(--glow);
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 10px var(--glow), 0 0 20px var(--accent); }
+  50% { text-shadow: 0 0 20px var(--accent), 0 0 40px var(--glow); }
+  100% { text-shadow: 0 0 10px var(--glow), 0 0 20px var(--accent); }
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px var(--accent); }
+  50% { text-shadow: 0 0 20px var(--accent-dark), 0 0 40px var(--glow); }
+  100% { text-shadow: 0 0 5px var(--accent); }
 }
 
 @media (max-width: 600px) {
-  #forside h2 { font-size: 3.2rem; }
+  #forside h2 { font-size: 3rem; }
   #forside h3 { font-size: 1.3rem; }
   main { padding: 1.5rem 5% 9rem; }
 }
@@ -251,7 +290,8 @@ footer {
     <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
   </div>
 
-  <!-- Andre sider kan indsættes her som div.page -->
+  <!-- Flere sider kan indsættes her som div.page -->
+
 </main>
 
 <nav class="bottom-nav">
