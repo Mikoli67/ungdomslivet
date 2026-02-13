@@ -149,4 +149,52 @@ button:hover {
       <!-- Alle svar -->
       <div class="brev-box">
         <h3>Alle svar</h3>
-        <div id="al
+        <div id="alleSvar">
+          <p><strong>Kan man skifte køn i DK, hvis man ikke er 18 år?</strong><br>Nej du skal være 18 eller over.</p>
+          <p><strong>Hvad er ”soft girls” trend, som kommer fra Sverige?</strong><br>Det er en stil, der er opfundet i Sverige.</p>
+          <p><strong>Jeg vil gerne vide hvorfor der er så mange unge der ryger?</strong><br>Måske har folk rundt om dem en dårlig indflydelse på dem. Der kan være mange årsager.</p>
+          <p><strong>Selvmords tanker, men fobi for at dø, tager selvskade. Hvad er galt med mig, og hvad gør jeg?</strong><br>Der er ikke noget galt med dig. Som jeg kan se, har du det ret svært. Prøv at bede om hjælp fra nogle tætte, eller Børnetelefonen. Jeg er glad for du gad at skrive om det.</p>
+          <p><strong>Hvordan balancerer jeg min sport og skole uden at blive stresset?</strong><br>Lav en slags rutine. De dage du har mange lektier, så skipper du træning.</p>
+          <p><strong>Jeg vil gerne prøve en ny stil, men er bange for hvad andre tænker. Hvad kan jeg gøre?</strong><br>Vær dig selv. Ingen skal sige noget om din stil. Det er helt normalt at ændre stil på din alder.</p>
+          <p><strong>Hvorfor skal man dømmes ved alt man laver?</strong><br>Folk dømmer andre, fordi de er misundelige eller vil kontrollere andre. Ignorer det.</p>
+          <p><strong>Jeg har et problem med mine venner, jeg føler de ikke vil have mig. Hvad gør jeg?</strong><br>Du bliver nødt til at snakke med dine venner om det, ellers kan det blive værre.</p>
+          <p><strong>Hvorfor ryger unge?</strong><br>Unge ryger ofte på grund af stress eller gruppepres.</p>
+          <p><strong>Hvorfor ser folk porno?</strong><br>Mange ser det, fordi de er nysgerrige eller vil lære mere.</p>
+          <p><strong>Hvad er konsekvenserne ved at se porno?</strong><br>Det kan føre til afhængighed og påvirke mental sundhed.</p>
+          <p><strong>Jeg har selvmords tanker men har fobi for døden og selvskade. Hvad gør jeg?</strong><br>Stop med selvskade og snak med venner, familie eller Børnetelefonen. Sid ikke alene med det.</p>
+          <p><strong>Hvorfor sammenligner unge sig med andre?</strong><br>Fordi de er utilfredse med sig selv. Accepter dig selv som du er.</p>
+          <p><strong>Hvornår bliver drenge normale?</strong><br>Det varierer fra dreng til dreng, nogle bliver normale i 20'erne, andre tidligere eller senere.</p>
+          <!-- Du kan fortsætte med alle de andre svar på samme måde -->
+        </div>
+      </div>
+
+      <!-- Spørgsmål fra brugere -->
+      <div class="brev-box">
+        <h3>Spørgsmål fra brugere</h3>
+        <div id="spmListe">
+          <!-- Nye spørgsmål kommer her -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+const sendBtn = document.getElementById('sendBtn');
+const spmInput = document.getElementById('spmInput');
+const spmListe = document.getElementById('spmListe');
+
+sendBtn.addEventListener('click', () => {
+  const spm = spmInput.value.trim();
+  if(spm !== ""){
+    const p = document.createElement('p');
+    p.textContent = spm;
+    spmListe.appendChild(p);
+    spmListe.scrollTop = spmListe.scrollHeight;
+    spmInput.value = "";
+  }
+});
+</script>
+
+</body>
+</html>
