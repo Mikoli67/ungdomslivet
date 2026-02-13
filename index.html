@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ungdoms Filmet</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 :root {
   --bg: #FF0000;
@@ -14,9 +15,7 @@
   --border: #FF6F6F;
   --glow: rgba(255,80,80,0.7);
 }
-
 * { margin:0; padding:0; box-sizing:border-box; }
-
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
@@ -24,7 +23,6 @@ body {
   min-height:100vh;
   line-height:1.6;
 }
-
 header {
   background: rgba(255,0,0,0.9);
   padding:1.5rem 5%;
@@ -35,14 +33,12 @@ header {
   z-index:100;
   box-shadow:0 0 30px var(--glow);
 }
-
 header h1 {
   font-size:2.5rem;
   font-weight:900;
   color: var(--text);
   text-shadow:0 0 15px var(--glow),0 0 30px var(--accent);
 }
-
 header h3 {
   font-size:1.1rem;
   opacity:0.9;
@@ -50,13 +46,11 @@ header h3 {
   color:#FFD5D5;
   text-shadow:0 0 10px var(--glow);
 }
-
 main {
   max-width:900px;
   margin:0 auto;
   padding:2rem 5% 10rem;
 }
-
 .page {
   display:none;
   background: var(--card);
@@ -65,11 +59,8 @@ main {
   border:2px solid var(--border);
   box-shadow:0 0 20px var(--glow), 0 10px 30px rgba(0,0,0,0.5);
 }
-
 .page.active { display:block; }
-
 h2 { font-size:2rem; color: var(--accent); margin-bottom:1rem; text-shadow:0 0 10px var(--glow); }
-
 p, li { color:#fff; margin-bottom:1rem; }
 
 .brev-box, .avis-box, .test-box, .video-box {
@@ -79,6 +70,44 @@ p, li { color:#fff; margin-bottom:1rem; }
   box-shadow:0 0 20px var(--glow);
   max-height:700px;
   overflow-y:auto;
+}
+
+.brev-item {
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--accent);
+}
+
+textarea {
+  width:100%;
+  padding:1rem;
+  border-radius:12px;
+  border:2px solid var(--border);
+  background:#FF3333;
+  color:white;
+  font-size:1rem;
+  resize:vertical;
+  min-height:100px;
+}
+
+button {
+  padding:1rem 2rem;
+  background:var(--accent);
+  color:#0f172a;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 0 10px var(--glow);
+  transition:0.2s;
+}
+button:hover { transform:scale(1.05); }
+
+#clearBrev {
+  background:#444;
+  color:white;
 }
 
 .bottom-nav {
@@ -91,7 +120,6 @@ p, li { color:#fff; margin-bottom:1rem; }
   padding:0.9rem 0;
   z-index:999;
 }
-
 .bottom-nav a {
   color:#fff;
   text-decoration:none;
@@ -103,9 +131,7 @@ p, li { color:#fff; margin-bottom:1rem; }
   flex:1;
   max-width:100px;
 }
-
 .bottom-nav a i { font-size:1.5rem; margin-bottom:0.3rem; display:block; }
-
 .bottom-nav a.active, .bottom-nav a:hover {
   color:white;
   background: rgba(255,69,0,0.4);
@@ -122,8 +148,6 @@ img.cover {
 
 @media(max-width:600px) {
   main { padding:1.5rem 5% 9rem; }
-  #forside h2 { font-size:3.2rem; }
-  #forside h3 { font-size:1.3rem; }
 }
 </style>
 </head>
@@ -143,47 +167,214 @@ img.cover {
     <p>Velkommen til vores projektuge-hjemmeside. Her kan du læse om ungdom, valg, grænser og stil.</p>
   </div>
 
- <!-- Brevkasse -->
-<div id="brevkasse" class="page">
-  <h2>Brevkasse - Skriv dit spørgsmål</h2>
-  <div class="brev-box" id="brevList">
-    <!-- Alle svarene -->
-    <div id="alleSvar">
-      <p><strong>Kan man skifte køn i DK, hvis man ikke er 18 år?</strong><br>Nej du skal være 18 eller over.</p>
-      <p><strong>Hvad er ”soft girls” trend, som kommer fra Sverige?</strong><br>Det er en stil, der er opfundet i Sverige.</p>
-      <p><strong>Jeg vil gerne vide hvorfor der er så mange unge der ryger?</strong><br>Måske har folk rundt om dem en dårlig indflydelse på dem. Der kan være mange årsager.</p>
-      <!-- osv. alle de andre svar her -->
+  <!-- Brevkasse -->
+  <div id="brevkasse" class="page">
+    <h2>Brevkasse <span style="font-size:1.2rem; opacity:0.8;">— Anonym Rådgivning</span></h2>
+    <p style="margin-bottom:1.5rem; color:#ffebee;">
+      Skriv dit spørgsmål helt anonymt. Vi svarer så godt vi kan!
+    </p>
+
+    <div class="brev-box" id="brevList">
+      <div id="alleSvar">
+
+        <!-- GAMLE SVAR (statiske - nederst) -->
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Kan man skifte køn i DK, hvis man ikke er 18 år?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Nej, du skal være 18 eller over.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad er ”soft girls” trend, som kommer fra Sverige?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Det er en stil, der er opfundet i Sverige.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg vil gerne vide hvorfor der er så mange unge der ryger?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Måske har folk rundt om dem en dårlig indflydelse på dem. Der kan være mange årsager.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Selvmords tanker, men fobi for at dø, tager selvskade. Hvad er der galt med mig, og hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Der er ikke noget galt med dig ❤️ Du har det bare rigtig svært lige nu. Prøv at snakke med en voksen du stoler på eller ring til Børnetelefonen (116 111). Du er ikke alene, og det er kæmpe stort at du skrev det her.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan balancerer jeg min sport og skole uden at blive stresset?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Lav en fast rutine. De dage du har mange lektier, skip træning eller lav en kortere version. Det er okay at prioritere – din krop og dit hoved takker dig.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg vil gerne prøve en ny stil, men er bange for hvad andre tænker. Hvad kan jeg gøre?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Vær dig selv! De fleste kommer faktisk til at synes det er fedt. Og dem der siger noget negativt – de er bare usikre selv. Du er perfekt som du er.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor skal man dømmes ved alt man laver?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Folk dømmer fordi de er misundelige eller vil føle sig bedre selv. Ignorer det. De har ikke noget med dit liv at gøre.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg har et problem med mine venner, jeg føler de ikke vil have mig. Hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Du skal snakke med dem om det. Sig det ligeud. Ægte venner vil lytte og prøve at forstå dig.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor ryger unge?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Oftest pga. stress eller gruppepres. Det starter tit som "bare en gang" og bliver så til en vane.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor ser folk porno?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Fordi de er nysgerrige og kommer i puberteten. Det er mega normalt i din alder.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad er konsekvenserne ved at se porno?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Nogle bliver afhængige og det kan påvirke humøret eller forventninger til sex. Hvis det føles forkert – tag en pause.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg har selvmords tanker men har fobi for at dø så jeg tager selvskade. Hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Stop med selvskade – det gør det kun værre. Snak med nogen! Børnetelefonen, en lærer, forældre, hvem som helst. Du fortjener hjælp.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor sammenligner unge sig selv med andre?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Fordi de er utilfredse med sig selv. Men du er perfekt som du er. Stop med at sammenligne – du er unik.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvornår bliver drenge normale?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Det er forskelligt 😂 Nogle i 20’erne, nogle før, nogle aldrig. Det er okay.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Kære brevkasse jeg ville gerne vide hvorfor unge ser porno og spiller pik</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Fordi vi er nysgerrige og prøver ting af. Det er normalt, men det kan også blive en afhængighed.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg kunne godt tænke mig at være ligeglad med hvad folk tænker. Hvad kan jeg gøre?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Find venner der accepterer dig 100%. Og øv dig i at sige: "Det er deres problem, ikke mit."</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan kan jeg lære at kode?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Se YouTube (freeCodeCamp, The Coding Train) eller prøv Scratch/Code.org først. Det er mega sjovt når det går op for en!</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvor kan jeg få et job som 13 år?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Bliv avisbud hos FK Distribution – blivomdeler.nu</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan påvirker vægttab muligheder for at få børn i fremtiden?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Når kroppen smider ekstra fedt, får den ofte bedre styr på hormonerne – så det kan faktisk gøre det lettere at blive gravid senere.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan blokerer jeg en dreng som jeg ikke kan lide, men han ’elsker’ mig?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Skriv det pænt til ham og blokér bagefter. Hvis han virkelig elsker dig, respekterer han dit nej.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> En af mine venner har gjort noget forkert mod en anden ven, og nu er det akavet. Hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Snak med ham om det. Sig hvordan du har det. Ægte venner forstår.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan stopper unge med at ryge og hvordan beskytter man sig?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Snak med nogen, find noget andet at lave når trangen kommer (slik, tyggegummi). Og brug altid kondom hvis der er sex involveret.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor har jeg så meget hår? Hvordan holder jeg mit venskab?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Det er puberteten – totalt normalt. Hvis venskabet føles tyndt, tag en pause eller snak ærligt.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan siger man nej til rygning?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Stå fast og sig "nej tak". Hvis de bliver ved, gå fra dem. Ægte venner presser ikke.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan siger man fra uden at gøre nogle sure?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Snak roligt og forklar hvorfor. Hvis de bliver sure alligevel – det er okay, det er deres valg.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor er jeg altid stiv?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Puberteten + tanker. Det er helt normalt. Det bliver bedre med tiden.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Jeg har gjort min dame gravid. Hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>I skal snakke sammen om hvad I vil. Og du skal tage ansvar – du er lige så meget med i det.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør man hvis man har en baby i maven?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Snak med en voksen du stoler på og med ham. I er ikke alene om det.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Vil gerne stoppe med at se porno. Hvad gør jeg?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Fokuser på sport, venner, hobbyer. Når trangen kommer – lav noget andet med det samme.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør jeg hvis jeg gerne vil flytte skole?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Snak med dine forældre om hvorfor. De kan hjælpe med at finde en løsning.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør jeg hvis jeg er til kvinder?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Vær stolt af det. Lad være med at lade andre bestemme hvem du er.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan stopper jeg med at kigge på damer?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Find noget andet at fokusere på – sport, musik, hvad som helst. Det bliver nemmere med tiden.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør jeg hvis læreren er irriterende?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Ignorer det og fokuser på at lære. Eller sig det pænt hvis du tør.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør jeg hvis jeg er sulten, men vil ikke tage på?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Lav en sund rutine – spis når du er sulten, men vælg sundere ting.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvordan kan jeg hjælpe nogle som er begyndt at ryge?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Forklar hvor skadeligt det er. Hvis de ikke vil lytte – du har gjort dit. Du kan ikke tvinge nogen.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvorfor er der så meget hår på min pik?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Puberteten. Det er helt normalt.</p>
+        </div>
+
+        <div class="brev-item">
+          <p><strong>Spørgsmål:</strong> Hvad gør jeg hvis jeg kan lide en pige fra min årgang som aldrig lægger mærke til mig?</p>
+          <p><strong>Svar fra Ungdoms Filmet:</strong><br>Prøv at snakke med hende stille og roligt. Hvis hun er kold – hun er ikke det værd. Der findes en der vil se dig.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <textarea id="nyBrev" placeholder="Skriv dit spørgsmål her... (f.eks. om kærlighed, krop, venner, grænser osv.)"></textarea>
+      
+      <div style="display:flex; gap:1rem; margin-top:0.8rem; flex-wrap:wrap;">
+        <button id="sendBrev">Send Spørgsmål</button>
+        <button id="clearBrev">Ryd nye</button>
+      </div>
     </div>
   </div>
-  <div style="margin-top:1rem;">
-    <textarea id="nyBrev" placeholder="Skriv dit spørgsmål her..." style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:#FF3333; color:white;"></textarea>
-    <button id="sendBrev" style="margin-top:0.5rem; padding:1rem 2rem; background:var(--accent); color:#0f172a; border:none; border-radius:12px; cursor:pointer; font-weight:bold; box-shadow:0 0 10px var(--glow);">Send</button>
-  </div>
-</div>
-
-<script>
-// Funktion til at tilføje nye brevkasse spørgsmål
-document.getElementById('sendBrev').addEventListener('click', () => {
-  const input = document.getElementById('nyBrev');
-  const text = input.value.trim();
-  if(text === "") return; // tomme spørgsmål ignoreres
-  const alleSvar = document.getElementById('alleSvar');
-  
-  // Opret nyt element
-  const p = document.createElement('p');
-  p.innerHTML = `<strong>Spørgsmål fra bruger:</strong><br>${text}<br><em>Vent på svar...</em>`;
-  
-  // Tilføj til bunden
-  alleSvar.appendChild(p);
-  
-  // Rul ned til ny besked
-  alleSvar.scrollTop = alleSvar.scrollHeight;
-  
-  // Ryd inputfelt
-  input.value = "";
-});
-</script>
-
 
   <!-- Avis -->
   <div id="avis" class="page">
@@ -218,7 +409,6 @@ document.getElementById('sendBrev').addEventListener('click', () => {
       </div>
     </div>
   </div>
-
 </main>
 
 <nav class="bottom-nav">
@@ -230,6 +420,7 @@ document.getElementById('sendBrev').addEventListener('click', () => {
 </nav>
 
 <script>
+// ==================== NAVIGATION ====================
 document.querySelectorAll('.bottom-nav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -239,6 +430,73 @@ document.querySelectorAll('.bottom-nav a').forEach(link => {
     const target = document.getElementById(link.getAttribute('href').substring(1));
     if(target) target.classList.add('active');
   });
+});
+
+// ==================== BREVKASSE SCRIPT ====================
+const svarDatabase = [
+  { keys: ["køn", "skifte køn", "trans", "kønsidentitet"], svar: "Du skal være 18 år for at få hormonbehandling eller operation i Danmark. Men du kan allerede nu få gratis og anonym hjælp hos Sexologisk Klinik." },
+  { keys: ["crush", "forelsket", "kan ikke sige", "liker en"], svar: "Det er helt normalt at være nervøs! Start med at smile og snakke lidt mere med personen. Du behøver ikke sige det hele med det samme." },
+  { keys: ["sex", "første gang", "grænse", "pres", "tvunget"], svar: "Ingen må nogensinde presse dig. Det skal føles 100% rigtigt for dig. Hvis du er i tvivl – vent. Det er din krop!" },
+  { keys: ["ryger", "vape", "cigaret", "weed"], svar: "De fleste starter pga. venner eller stress. Det er svært at stoppe igen. Prøv at tale med en voksen du stoler på – det hjælper virkelig." },
+  { keys: ["porno", "porn", "afhængig"], svar: "Det er mega almindeligt i din alder. Hvis det begynder at påvirke dit humør, skole eller forhold, så tag en pause." }
+];
+
+const sendBtn = document.getElementById('sendBrev');
+const textarea = document.getElementById('nyBrev');
+const container = document.getElementById('alleSvar');
+
+function sendBrev() {
+  const text = textarea.value.trim();
+  if (!text) return;
+
+  const item = document.createElement('div');
+  item.className = 'brev-item';
+  item.innerHTML = `
+    <p><strong>Spørgsmål:</strong> ${text}</p>
+    <p><em style="color:#ff9999;">Ungdoms Filmet svarer om lidt...</em></p>
+  `;
+  container.insertBefore(item, container.firstChild); // Nye spørgsmål øverst
+  container.scrollTop = 0;
+
+  setTimeout(() => {
+    let svar = "Tak for dit ærlige spørgsmål! Vi vender tilbage hurtigst muligt.";
+
+    for (let entry of svarDatabase) {
+      if (entry.keys.some(k => text.toLowerCase().includes(k))) {
+        svar = entry.svar;
+        break;
+      }
+    }
+
+    item.innerHTML = `
+      <p><strong>Spørgsmål:</strong> ${text}</p>
+      <p><strong>Svar fra Ungdoms Filmet:</strong><br>${svar}</p>
+    `;
+    container.scrollTop = 0;
+  }, 1500);
+
+  textarea.value = "";
+}
+
+sendBtn.addEventListener('click', sendBrev);
+
+textarea.addEventListener('keypress', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendBrev();
+  }
+});
+
+document.getElementById('clearBrev').addEventListener('click', () => {
+  if (confirm("Vil du slette alle nye beskeder? (Gamle forbliver)")) {
+    // Find og fjern kun nye items (de øverste, før de gamle statiske)
+    const items = container.querySelectorAll('.brev-item');
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].innerHTML.includes('Spørgsmål:')) { // Alle er nye hvis de matcher, men behold de gamle
+        items[i].remove();
+      }
+    }
+  }
 });
 </script>
 
