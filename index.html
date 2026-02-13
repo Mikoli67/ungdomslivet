@@ -143,19 +143,47 @@ img.cover {
     <p>Velkommen til vores projektuge-hjemmeside. Her kan du læse om ungdom, valg, grænser og stil.</p>
   </div>
 
-  <!-- Brevkasse -->
-  <div id="brevkasse" class="page">
-    <h2>Brevkasse - Alle svar</h2>
-    <div class="brev-box">
-      <div id="alleSvar">
-        <p><strong>Kan man skifte køn i DK, hvis man ikke er 18 år?</strong><br>Nej du skal være 18 eller over.</p>
-        <p><strong>Hvad er ”soft girls” trend, som kommer fra Sverige?</strong><br>Det er en stil, der er opfundet i Sverige.</p>
-        <p><strong>Jeg vil gerne vide hvorfor der er så mange unge der ryger?</strong><br>Måske har folk rundt om dem en dårlig indflydelse på dem. Der kan være mange årsager.</p>
-        <!-- resten af brevkasse-svarene fortsætter her... -->
-        <p><strong>Hvad gør jeg hvis jeg kan lide en pige fra min årgang som aldrig lægger mærke til mig?</strong><br>Vær tålmodig og snak roligt, giv hende plads.</p>
-      </div>
+ <!-- Brevkasse -->
+<div id="brevkasse" class="page">
+  <h2>Brevkasse - Skriv dit spørgsmål</h2>
+  <div class="brev-box" id="brevList">
+    <!-- Alle svarene -->
+    <div id="alleSvar">
+      <p><strong>Kan man skifte køn i DK, hvis man ikke er 18 år?</strong><br>Nej du skal være 18 eller over.</p>
+      <p><strong>Hvad er ”soft girls” trend, som kommer fra Sverige?</strong><br>Det er en stil, der er opfundet i Sverige.</p>
+      <p><strong>Jeg vil gerne vide hvorfor der er så mange unge der ryger?</strong><br>Måske har folk rundt om dem en dårlig indflydelse på dem. Der kan være mange årsager.</p>
+      <!-- osv. alle de andre svar her -->
     </div>
   </div>
+  <div style="margin-top:1rem;">
+    <textarea id="nyBrev" placeholder="Skriv dit spørgsmål her..." style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:#FF3333; color:white;"></textarea>
+    <button id="sendBrev" style="margin-top:0.5rem; padding:1rem 2rem; background:var(--accent); color:#0f172a; border:none; border-radius:12px; cursor:pointer; font-weight:bold; box-shadow:0 0 10px var(--glow);">Send</button>
+  </div>
+</div>
+
+<script>
+// Funktion til at tilføje nye brevkasse spørgsmål
+document.getElementById('sendBrev').addEventListener('click', () => {
+  const input = document.getElementById('nyBrev');
+  const text = input.value.trim();
+  if(text === "") return; // tomme spørgsmål ignoreres
+  const alleSvar = document.getElementById('alleSvar');
+  
+  // Opret nyt element
+  const p = document.createElement('p');
+  p.innerHTML = `<strong>Spørgsmål fra bruger:</strong><br>${text}<br><em>Vent på svar...</em>`;
+  
+  // Tilføj til bunden
+  alleSvar.appendChild(p);
+  
+  // Rul ned til ny besked
+  alleSvar.scrollTop = alleSvar.scrollHeight;
+  
+  // Ryd inputfelt
+  input.value = "";
+});
+</script>
+
 
   <!-- Avis -->
   <div id="avis" class="page">
