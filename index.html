@@ -14,7 +14,7 @@
   --accent: #FF4500;               /* fiery orange-red accents */
   --accent-dark: #FF0000;          /* bright red for hover */
   --border: #FF6F6F;               /* subtle red border */
-  --glow: rgba(255, 80, 80, 0.7);  /* neon glow effect */
+  --glow: rgba(255, 80, 80, 0.7);  /* neon red glow effect */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,6 +78,17 @@ main {
   padding: 2rem 2rem 6rem;
 }
 
+/* FRONT PAGE TEXT IN CLEAN WHITE */
+#forside h2,
+#forside h3 {
+  color: #ffffff; /* white text */
+  text-shadow: 0 0 15px rgba(255,255,255,0.6); /* subtle white glow */
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  animation: none;
+}
+
 #forside img.cover {
   width: 100%;
   max-height: 400px;
@@ -90,23 +101,6 @@ main {
 
 #forside img.cover:hover {
   transform: scale(1.05);
-}
-
-#forside h2 {
-  font-size: 4rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px var(--accent);
-  margin-bottom: 1rem;
-  animation: glowText 2s infinite alternate;
-}
-
-#forside h3 {
-  font-size: 1.5rem;
-  opacity: 0.9;
-  color: #FFD5D5;
 }
 
 h2 {
@@ -262,12 +256,6 @@ footer {
   100% { text-shadow: 0 0 10px var(--glow), 0 0 20px var(--accent); }
 }
 
-@keyframes glowText {
-  0% { text-shadow: 0 0 5px var(--accent); }
-  50% { text-shadow: 0 0 20px var(--accent-dark), 0 0 40px var(--glow); }
-  100% { text-shadow: 0 0 5px var(--accent); }
-}
-
 @media (max-width: 600px) {
   #forside h2 { font-size: 3rem; }
   #forside h3 { font-size: 1.3rem; }
@@ -289,9 +277,7 @@ footer {
     <h2>Ungdoms Filmet</h2>
     <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
   </div>
-
   <!-- Flere sider kan indsættes her som div.page -->
-
 </main>
 
 <nav class="bottom-nav">
