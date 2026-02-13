@@ -3,56 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ungdoms Filmet</title>
+<title>Ungdoms Filmet - Brevkasse</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 :root {
   --bg: #FF0000;                   /* bright red background */
-  --card: #FF1A1A;                 /* dark bright red cards */
+  --card: #FF1A1A;                 /* darker red for cards */
   --text: #fff;                     /* white text */
   --accent: #FF4500;               /* fiery orange-red accents */
-  --accent-dark: #FF0000;          /* bright red for hover */
+  --accent-dark: #FF0000;          /* bright red hover */
   --border: #FF6F6F;               /* subtle red border */
-  --glow: rgba(255, 80, 80, 0.7);  /* neon red glow effect */
+  --glow: rgba(255, 80, 80, 0.7);  /* neon red glow */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  line-height: 1.6;
-  transition: background 0.3s;
+  min-height:100vh;
+  line-height:1.6;
 }
 
 header {
-  background: rgba(255, 0, 0, 0.9);
-  padding: 1.5rem 5%;
-  text-align: center;
-  border-bottom: 2px solid var(--border);
+  background: rgba(255,0,0,0.9);
+  padding:1.5rem 5%;
+  text-align:center;
+  border-bottom:2px solid var(--border);
   position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 0 30px var(--glow);
+  top:0;
+  z-index:100;
+  box-shadow:0 0 30px var(--glow);
 }
 
 header h1 {
-  font-size: 2.5rem;
-  font-weight: 900;
+  font-size:2.5rem;
+  font-weight:900;
   color: var(--text);
-  text-shadow: 0 0 15px var(--glow), 0 0 30px var(--accent);
-  animation: pulse 2s infinite;
+  text-shadow:0 0 15px var(--glow),0 0 30px var(--accent);
+  animation:pulse 2s infinite;
 }
 
 header h3 {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-top: 0.3rem;
-  color: #FFD5D5;
-  text-shadow: 0 0 10px var(--glow);
+  font-size:1.1rem;
+  opacity:0.9;
+  margin-top:0.3rem;
+  color:#FFD5D5;
+  text-shadow:0 0 10px var(--glow);
 }
 
 main {
@@ -71,199 +69,68 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
-.page.active { display: block; transform: scale(1.02); }
+.page.active { display:block; transform:scale(1.02); }
 
-#forside {
-  text-align: center;
-  padding: 2rem 2rem 6rem;
+h2 { font-size:2rem; color: var(--accent); margin-bottom:1rem; text-shadow:0 0 10px var(--glow); }
+
+textarea {
+  width:100%;
+  border-radius:10px;
+  padding:0.8rem;
+  border:1px solid #FF6F6F;
+  background:#FF1A1A;
+  color:#fff;
 }
 
-/* FRONT PAGE TEXT IN CLEAN WHITE */
-#forside h2,
-#forside h3 {
-  color: #ffffff; /* white text */
-  text-shadow: 0 0 15px rgba(255,255,255,0.6); /* subtle white glow */
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  animation: none;
+button {
+  margin-top:1rem;
+  padding:0.8rem 1.2rem;
+  background:#FF4500;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:all 0.3s;
 }
 
-#forside img.cover {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 30px var(--glow), 0 10px 30px rgba(0,0,0,0.7);
-  transition: transform 0.3s;
+button:hover {
+  background:#FF0000;
+  box-shadow:0 0 20px var(--accent);
 }
 
-#forside img.cover:hover {
-  transform: scale(1.05);
+.brev-container {
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:2rem;
 }
 
-h2 {
-  font-size: 2.1rem;
-  color: var(--accent);
-  margin: 2rem 0 1.2rem;
-  text-shadow: 0 0 10px var(--glow);
+.brev-box {
+  flex:1 1 300px;
+  background:#FF1A1A;
+  padding:1rem;
+  border-radius:15px;
+  box-shadow:0 0 20px var(--glow);
+  max-height:500px;
+  overflow-y:auto;
 }
 
-p, li {
-  font-size: 1.08rem;
-  color: #fff;
-}
+.brev-box h3 { color:#fff; margin-bottom:0.5rem; }
 
-.card {
-  background: #FF1A1A;
-  padding: 1.5rem;
-  border-radius: 15px;
-  margin: 1rem 0;
-  border: 2px solid var(--border);
-  box-shadow: 0 0 15px var(--glow);
-  transition: all 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: var(--accent);
-  box-shadow: 0 0 30px var(--accent), 0 15px 40px rgba(0,0,0,0.5);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px var(--accent);
-}
-
-.form-link {
-  display: block;
-  background: var(--accent);
-  color: #0f0f0f;
-  font-weight: 700;
-  text-align: center;
-  padding: 1.2rem;
-  border-radius: 15px;
-  text-decoration: none;
-  margin: 2rem auto;
-  max-width: 260px;
-  font-size: 1.2rem;
-  box-shadow: 0 0 20px var(--accent);
-  transition: all 0.3s;
-}
-
-.form-link:hover {
-  background: var(--accent-dark);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 40px var(--accent-dark);
-}
-
-.video-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.video-item {
-  background: #FF1A1A;
-  padding: 1.5rem;
-  border-radius: 15px;
-  border: 2px solid var(--border);
-  box-shadow: 0 0 20px var(--glow);
-}
-
-.video-item h4 {
-  color: #fff;
-  margin-bottom: 0.8rem;
-  font-size: 1.3rem;
-  text-shadow: 0 0 10px var(--accent);
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  border-radius: 15px;
-  overflow: hidden;
-  margin: 1rem 0;
-  box-shadow: 0 0 25px var(--accent), 0 6px 20px rgba(0,0,0,0.7);
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  background: #FF0000;
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem 0;
-  z-index: 999;
-  border-top: 2px solid var(--border);
-  box-shadow: 0 0 20px var(--glow);
-}
-
-.bottom-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.9rem;
-  text-align: center;
-  padding: 0.5rem 0.8rem;
-  border-radius: 12px;
-  transition: all 0.3s;
-  flex: 1;
-  max-width: 100px;
-}
-
-.bottom-nav a i {
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.bottom-nav a.active,
-.bottom-nav a:hover {
-  color: var(--accent);
-  background: rgba(255, 69, 0, 0.3);
-  box-shadow: 0 0 20px var(--accent);
-}
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: #fff;
-  font-size: 0.9rem;
-  background: #FF1A1A;
-  box-shadow: 0 0 20px var(--glow);
-}
+.brev-box p { color:#fff; line-height:1.5; margin-bottom:1rem; }
 
 @keyframes pulse {
-  0% { text-shadow: 0 0 10px var(--glow), 0 0 20px var(--accent); }
-  50% { text-shadow: 0 0 20px var(--accent), 0 0 40px var(--glow); }
-  100% { text-shadow: 0 0 10px var(--glow), 0 0 20px var(--accent); }
+  0% { text-shadow:0 0 10px var(--glow),0 0 20px var(--accent); }
+  50% { text-shadow:0 0 20px var(--accent),0 0 40px var(--glow); }
+  100% { text-shadow:0 0 10px var(--glow),0 0 20px var(--accent); }
 }
 
-@media (max-width: 600px) {
-  #forside h2 { font-size: 3rem; }
-  #forside h3 { font-size: 1.3rem; }
-  main { padding: 1.5rem 5% 9rem; }
+@media (max-width:600px) {
+  main { padding:1.5rem 5% 9rem; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -272,41 +139,14 @@ footer {
 </header>
 
 <main>
-  <div id="forside" class="page active">
-    <img src="https://files.oaiusercontent.com/file-3Z7X0Z0Z0Z0Z0Z0Z0Z0Z0Z?se=2026-02-13T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscca=1&sig=..." class="cover" alt="Forside billede">
-    <h2>Ungdoms Filmet</h2>
-    <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
-  </div>
-  <!-- Flere sider kan indsættes her som div.page -->
-</main>
+  <div id="brevkasse" class="page active">
+    <h2>Brevkasse</h2>
+    <p>Skriv dit spørgsmål her:</p>
+    <textarea id="spmInput" placeholder="Skriv dit spørgsmål..." rows="4"></textarea>
+    <button id="sendBtn">Send</button>
 
-<nav class="bottom-nav">
-  <a href="#forside" class="active"><i class="fas fa-home"></i>Forside</a>
-  <a href="#avis"><i class="fas fa-newspaper"></i>Avis</a>
-  <a href="#brevkasse"><i class="fas fa-envelope"></i>Brevkasse</a>
-  <a href="#test"><i class="fas fa-question-circle"></i>Test</a>
-  <a href="#video"><i class="fas fa-video"></i>Video</a>
-</nav>
-
-<footer>
-  <p>Lavet af 7.A og 7.B</p>
-</footer>
-
-<script>
-document.querySelectorAll('.bottom-nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelectorAll('.bottom-nav a').forEach(a => a.classList.remove('active'));
-    link.classList.add('active');
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const target = document.getElementById(link.getAttribute('href').substring(1));
-    if (target) {
-      target.classList.add('active');
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
-
-</body>
-</html>
+    <div class="brev-container">
+      <!-- Alle svar -->
+      <div class="brev-box">
+        <h3>Alle svar</h3>
+        <div id="al
