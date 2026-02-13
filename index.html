@@ -8,12 +8,12 @@
 
 <style>
 :root {
-  --bg: #FF0000;          /* bright red background */
-  --card: #1e293b;        /* dark blue-gray card */
-  --text: #f1f5f9;        /* light text */
-  --accent: #38bdf8;      /* light blue accent */
-  --accent-dark: #0ea5e9; /* darker blue accent */
-  --border: #334155;
+  --bg: #FF0000;                   /* bright red background */
+  --card: rgba(255, 80, 80, 0.8);  /* translucent red for cards */
+  --text: #fff8f0;                 /* off-white text */
+  --accent: #ffd700;               /* golden yellow accent */
+  --accent-dark: #e6c200;          /* darker yellow accent for hover */
+  --border: rgba(255, 200, 0, 0.5);/* subtle golden border */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(10px);
   padding: 1.2rem 5%;
   text-align: center;
@@ -45,7 +45,7 @@ header h1 {
 
 header h3 {
   font-size: 1.05rem;
-  opacity: 0.8;
+  opacity: 0.85;
   margin-top: 0.3rem;
 }
 
@@ -61,7 +61,7 @@ main {
   padding: 1.8rem;
   border-radius: 16px;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .page.active { display: block; }
@@ -83,7 +83,7 @@ main {
 #forside h2 {
   font-size: 4.2rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #38bdf8, #a5f3fc);
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -102,11 +102,11 @@ h2 {
 
 p, li {
   font-size: 1.08rem;
-  color: #cbd5e1;
+  color: #fff8f0;
 }
 
 .card {
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(255, 80, 80, 0.6);
   padding: 1.3rem;
   border-radius: 12px;
   margin: 1rem 0;
@@ -117,7 +117,7 @@ p, li {
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 12px 35px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.25);
 }
 
 .card img {
@@ -144,7 +144,7 @@ p, li {
 .form-link:hover {
   background: var(--accent-dark);
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 10px 25px rgba(230, 194, 0, 0.35);
 }
 
 .video-list {
@@ -155,14 +155,14 @@ p, li {
 }
 
 .video-item {
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(255, 80, 80, 0.6);
   padding: 1.4rem;
   border-radius: 14px;
   border: 1px solid var(--border);
 }
 
 .video-item h4 {
-  color: #e2e8f0;
+  color: #fff8f0;
   margin-bottom: 0.8rem;
   font-size: 1.3rem;
 }
@@ -197,7 +197,7 @@ p, li {
 }
 
 .bottom-nav a {
-  color: #94a3b8;
+  color: #fff8f0;
   text-decoration: none;
   font-size: 0.9rem;
   text-align: center;
@@ -216,14 +216,14 @@ p, li {
 
 .bottom-nav a.active,
 .bottom-nav a:hover {
-  color: white;
-  background: rgba(56, 189, 248, 0.2);
+  color: var(--accent);
+  background: rgba(255, 215, 0, 0.2);
 }
 
 footer {
   text-align: center;
   padding: 2rem 1rem;
-  color: #64748b;
+  color: #fff8f0;
   font-size: 0.9rem;
 }
 
@@ -244,12 +244,13 @@ footer {
 
 <main>
   <div id="forside" class="page active">
-    <img src="https://files.oaiusercontent.com/file-3Z7X0Z0Z0Z0Z0Z0Z0Z0Z0Z?se=2026-02-13T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscca=1&sig=..." class="cover">
+    <img src="https://files.oaiusercontent.com/file-3Z7X0Z0Z0Z0Z0Z0Z0Z0Z0Z?se=2026-02-13T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscca=1&sig=..." class="cover" alt="Forside billede">
     <h2>Ungdoms Filmet</h2>
     <h3>Projektuge – kærlighed, krop, grænser & valg</h3>
   </div>
 
-  <!-- Resten af siderne er uændret -->
+  <!-- Andre sider kan indsættes her som div.page -->
+
 </main>
 
 <nav class="bottom-nav">
