@@ -110,6 +110,31 @@ button:hover { transform:scale(1.05); }
   color:white;
 }
 
+.embedded-form {
+  width:100%;
+  height:800px;
+  border: none;
+  border-radius:15px;
+  box-shadow:0 0 20px var(--glow);
+  margin:1rem 0;
+}
+
+.quiz-link {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  margin: 1rem 0;
+  transition: 0.2s;
+}
+.quiz-link:hover {
+  transform: scale(1.05);
+  background: #FF6F6F;
+}
+
 .bottom-nav {
   position: fixed;
   bottom:0; left:0; right:0;
@@ -148,6 +173,7 @@ img.cover {
 
 @media(max-width:600px) {
   main { padding:1.5rem 5% 9rem; }
+  .embedded-form { height:600px; }
 }
 </style>
 </head>
@@ -386,17 +412,21 @@ img.cover {
     </div>
   </div>
 
-  <!-- Skole Test -->
+  <!-- Skole Test - OPDAERET MED GOOGLE FORM -->
   <div id="test" class="page">
     <h2>Skole Test</h2>
-    <div class="test-box">
-      <p><strong>Quiz Eksempel:</strong></p>
-      <ol>
-        <li>Hvad hedder Danmarks hovedstad?<br>Svar: København</li>
-        <li>Hvornår starter projektugen?<br>Svar: Februar</li>
-        <li>Hvad er vigtigst i teamwork?<br>Svar: Kommunikation og samarbejde</li>
-      </ol>
-    </div>
+    <p style="text-align:center; font-size:1.2rem; margin-bottom:2rem;">Prøv vores interaktive quiz om projektugen!</p>
+    
+    <!-- Embed Google Form (hvis det er en form/quiz - ellers link) -->
+    <iframe class="embedded-form" src="https://forms.gle/4F6Wo86vABsoSXe97" title="Ungdoms Filmet Quiz"></iframe>
+    
+    <!-- Fallback link hvis embed ikke virker -->
+    <p style="text-align:center;">
+      <a href="https://forms.gle/4F6Wo86vABsoSXe97" target="_blank" class="quiz-link">Åbn Quiz i ny fane (hvis iframe ikke loader)</a>
+    </p>
+    
+    <div class="test-box" style="margin-top:2rem;">
+    
   </div>
 
   <!-- Video -->
@@ -489,12 +519,10 @@ textarea.addEventListener('keypress', e => {
 
 document.getElementById('clearBrev').addEventListener('click', () => {
   if (confirm("Vil du slette alle nye beskeder? (Gamle forbliver)")) {
-    // Find og fjern kun nye items (de øverste, før de gamle statiske)
-    const items = container.querySelectorAll('.brev-item');
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].innerHTML.includes('Spørgsmål:')) { // Alle er nye hvis de matcher, men behold de gamle
-        items[i].remove();
-      }
+    const items = Array.from(container.querySelectorAll('.brev-item'));
+    // Behold de sidste 39 (gamle) - fjern de første nye
+    for (let i = 0; i < items.length - 39; i++) {
+      items[i].remove();
     }
   }
 });
